@@ -4,7 +4,7 @@ import { SbUserRepository } from "@/infrastructure/repositories/SbUserRepository
 export async function POST(request: Request) {
     try {
         const { kakaoId } = await request.json();
-        console.log(kakaoId);
+        console.log("kakao id: ", kakaoId);
 
         if (!kakaoId) {
             return new Response("Kakao ID is required", { status: 400 });

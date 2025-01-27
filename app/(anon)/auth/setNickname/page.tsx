@@ -1,5 +1,6 @@
 "use client";
 
+import ProtectedRoutes from "@/components/user/ProtectedRoutes";
 import {
     Form,
     Header,
@@ -16,7 +17,7 @@ import React, { useEffect, useState } from "react";
 export default function SetNickname() {
     const router = useRouter();
     const supabase = createClientComponentClient();
-    const { kakaoId, name, setUser } = useUserStore((state) => state);
+    const { kakaoId, name, nickname, setUser } = useUserStore((state) => state);
     const [inputNickname, setInputNickname] = useState("");
 
     useEffect(() => {
@@ -26,7 +27,7 @@ export default function SetNickname() {
                     const kakaoId = session.user.id || "";
                     const name = session.user.user_metadata.name || "";
 
-                    setUser(kakaoId, name);
+                    setUser(kakaoId, name, nickname);
                 }
             }
         );
@@ -100,7 +101,7 @@ export default function SetNickname() {
     };
 
     return (
-        <>
+        <ProtectedRoutes>
             <Header>
                 <img src="/logos/logo.png" alt="logo" />
             </Header>
@@ -128,6 +129,6 @@ export default function SetNickname() {
                     <SignUpButton type="submit">마이킹 시작하기</SignUpButton>
                 </Form>
             </Main>
-        </>
+        </ProtectedRoutes>
     );
 }

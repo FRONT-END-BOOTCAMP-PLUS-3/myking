@@ -1,5 +1,6 @@
 "use client";
 
+import AuthProvider from "@/context/AuthProvider";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -143,7 +144,7 @@ export default function RootLayout({
             <body>
                 <ThemeProvider theme={theme}>
                     <GlobalStyle />
-                    {children}
+                    <AuthProvider>{children}</AuthProvider>
                 </ThemeProvider>
             </body>
         </html>

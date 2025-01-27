@@ -1,9 +1,13 @@
 "use client";
 
+import ProtectedRoute from "@/components/user/ProtectedRoutes";
+
 export default function Home() {
     return (
-        <div>
-            <h1>Miking</h1>
-        </div>
+        <ProtectedRoute>
+            <div>
+                <h1>Miking</h1>
+            </div>
+        </ProtectedRoute>
     );
 }
